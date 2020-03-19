@@ -1,0 +1,83 @@
+/* Color List
+bg - #1A1A1D
+BT - #3E3E50
+#6F2232
+#950740
+#c3073f
+*/
+
+.todoList_box {
+    background-color: rgba(0,0,0,0.5);
+    max-width: 800px;
+    margin: auto;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 20px 5vw;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 0 10px 1px lime;
+}
+.todoList_title {
+    text-align: center;
+    color: whitesmoke;
+    text-decoration: underline;
+    font-size: 72px;
+}
+.todoList_addbox {
+    display: flex;
+    justify-content: center;
+    height: 40px;
+    margin: 50px 0 20px 0;
+    width: 100%;
+    box-shadow: 0 0 2px 1px lime;
+    border-radius: 10px;
+}
+.todoList_input {
+    width: 80%;
+    border-radius: 10px 0 0 10px;
+    border: none;
+    padding: 0 10px;
+}
+.todoList_addButton {
+    width: 20%;
+    border-radius: 0 10px 10px 0;
+    color:lime;
+    background-color: #4E4E50;
+    border: none;
+    font-size: 40px;
+    line-height: 30px;
+}
+.todoItem_box{
+    width: 100%;
+    margin: 10px 0;
+    background-color: #4E4E50;
+    border-radius: 10px;
+    box-shadow: 0 0 2px 1px lime;
+    display: flex;
+    font-size: 18px;
+}
+.todoItem_content{
+    width: 75%;
+    padding: 5px;
+    word-break: break-all;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 10px 0 0 10px;
+    color: whitesmoke;
+}
+.todoItem_boxButton{
+    width: 25%;
+    border-left: 2px solid whitesmoke;
+}
+.todoItem_deleteButton,.todoItem_renameButton{
+    width: 50%;
+    background-color: transparent;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+    padding: 0 5px;
+}
+.todoItem_deleteButton{
+    color: red;
+}
+.todoItem_renameButton{
+    border-radius: 0 10px 10px 0px;
+    color: aqua;
+}

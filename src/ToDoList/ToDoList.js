@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ToDoItem from '../ToDoItem/ToDoItem'
+import classes from './ToDoList.module.css'
 
 class ToDoList extends Component {
     state = {
@@ -31,25 +31,27 @@ class ToDoList extends Component {
 
     render(){
         return(
-            <div>
-                <h1>ToDoList</h1>
-                <div>
-                    <input type="text" onChange={this.updateDraftHandler} value={this.state.draft}/>
-                    <button onClick={this.addNewitemHandler}>Add</button>
+            <div className={classes.todoList_box}>
+                <h1 className={classes.todoList_title}>ToDoList</h1>
+                <div className={classes.todoList_addbox}>
+                    <input type="text" onChange={this.updateDraftHandler} value={this.state.draft} className={classes.todoList_input}/>
+                    <button onClick={this.addNewitemHandler} className={classes.todoList_addButton}>+</button>
                 </div>
                 {this.state.todoList.map((item, id) => {
                     return (
-                        <div key={item.id}>
-                            <p>{item.text}</p>
-                            <button onClick={() => this.deleteItemHandler(id)}>x</button>
-                            <button onClick={() => {
-                                let t = prompt("", item.text)
-                                if(t){
-                                    const todoList = [...this.state.todoList];
-                                    todoList[id].text = t
-                                    this.setState({todoList: todoList, draft: ""})
-                                }
-                            }}>y</button>
+                        <div key={item.id} className={classes.todoItem_box}>
+                            <p className={classes.todoItem_content}>{item.text}</p>
+                            <div className={classes.todoItem_boxButton}>
+                                <button className={classes.todoItem_deleteButton} onClick={() => this.deleteItemHandler(id)}>Delete</button>
+                                <button className={classes.todoItem_renameButton} onClick={() => {
+                                    let t = prompt("Napisz nową zawartość i kliknij OK", item.text)
+                                    if(t){
+                                        const todoList = [...this.state.todoList];
+                                        todoList[id].text = t
+                                        this.setState({todoList: todoList, draft: ""})
+                                    }
+                                }}>Edit</button>
+                            </div>
                         </div>
                     );
                 })}
