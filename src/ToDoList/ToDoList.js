@@ -19,14 +19,18 @@ class ToDoList extends Component {
     updateDraftHandler = (e) => {
         this.setState({draft: e.target.value})
     }
-    addNewitemHandler = () => {
-        const todoList = [...this.state.todoList];
-        todoList.push({ 
-            id: Math.floor(Math.random() * 100),
-            done: false,
-            text: this.state.draft
-        })
-        this.setState({todoList: todoList, draft: " "})
+    addNewItemHandler = () => {
+        if(this.state.draft.length > 1){
+            const todoList = [...this.state.todoList];
+            todoList.push({ 
+                id: Math.floor(Math.random() * 100),
+                done: false,
+                text: this.state.draft
+            })
+            this.setState({todoList: todoList, draft: " "})
+        }else {
+            alert("Wpisz co kolwiek nie puse plz...")
+        }
     }
 
     render(){
@@ -34,8 +38,8 @@ class ToDoList extends Component {
             <div className={classes.todoList_box}>
                 <h1 className={classes.todoList_title}>ToDoList</h1>
                 <div className={classes.todoList_addbox}>
-                    <input type="text" onChange={this.updateDraftHandler} value={this.state.draft} className={classes.todoList_input}/>
-                    <button onClick={this.addNewitemHandler} className={classes.todoList_addButton}>+</button>
+                    <input type="text" onChange={this.updateDraftHandler} value={this.state.draft} className={classes.todoList_input} placeholder="Some Note.."/>
+                    <button onClick={this.addNewItemHandler} className={classes.todoList_addButton}>+</button>
                 </div>
                 {this.state.todoList.map((item, id) => {
                     return (
