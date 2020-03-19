@@ -38,11 +38,20 @@ class ToDoList extends Component {
                     <button onClick={this.addNewitemHandler}>Add</button>
                 </div>
                 {this.state.todoList.map((item, id) => {
-                    return <ToDoItem
-                    key={item.id} 
-                    text={item.text} 
-                    done={item.done}
-                    delete={() => this.deleteItemHandler(id)}/>
+                    return (
+                        <div key={item.id}>
+                            <p>{item.text}</p>
+                            <button onClick={() => this.deleteItemHandler(id)}>x</button>
+                            <button onClick={() => {
+                                let t = prompt("", item.text)
+                                if(t){
+                                    const todoList = [...this.state.todoList];
+                                    todoList[id].text = t
+                                    this.setState({todoList: todoList, draft: ""})
+                                }
+                            }}>y</button>
+                        </div>
+                    );
                 })}
             </div>
         );
