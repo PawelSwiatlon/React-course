@@ -14,6 +14,9 @@ class ToDoList extends Component {
             this.setState({todoList: JSON.parse(resoult)})
         }
     }
+    componentDidUpdate() {
+        localStorage.setItem("ToDoList", JSON.stringify(this.state.todoList))
+    }
     deleteItemHandler = (id) => {
         const todoList = [...this.state.todoList];
         todoList.splice(id, 1)
@@ -34,7 +37,6 @@ class ToDoList extends Component {
         }else {
             alert("Wpisz co kolwiek nie puse plz...")
         }
-        localStorage.setItem("ToDoList", JSON.stringify(this.state.todoList))
         
     }
     renameItemHandler = (id) => {
@@ -44,6 +46,12 @@ class ToDoList extends Component {
             todoList[id].text = t
             this.setState({todoList: todoList, draft: ""})
         }
+    }
+    doneHandler = (id) => {
+        const todoList = [...this.state.todoList];
+        todoList[id].done = !todoList[id].done
+        this.setState({todoList: todoList, draft: ""})
+        
     }
     render(){
         return(
@@ -58,7 +66,10 @@ class ToDoList extends Component {
                         key={item.id}
                         content={item.text}
                         remove={() => this.deleteItemHandler(id)}
-                        rename={() => this.renameItemHandler(id)}/>);
+                        rename={() => this.renameItemHandler(id)}
+                        doneChange={() => this.doneHandler(id)}
+                        done={item.done}/>
+                    );
                 })}
             </div>
         );
