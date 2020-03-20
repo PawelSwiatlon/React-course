@@ -5,13 +5,14 @@ import ToDoItem from '../ToDoItem/ToDoItem'
 
 class ToDoList extends Component {
     state = {
-        todoList: [
-            { id: "1", done: false, text: "test1"},
-            { id: "2", done: false, text: "test2"},
-            { id: "3", done: false, text: "test3"},
-            { id: "4", done: false, text: "test4"}
-        ],
+        todoList: [],
         draft: " "
+    }
+    componentDidMount() {
+        const resoult = localStorage.getItem('ToDoList')
+        if(resoult != null){
+            this.setState({todoList: JSON.parse(resoult)})
+        }
     }
     deleteItemHandler = (id) => {
         const todoList = [...this.state.todoList];
@@ -33,6 +34,8 @@ class ToDoList extends Component {
         }else {
             alert("Wpisz co kolwiek nie puse plz...")
         }
+        localStorage.setItem("ToDoList", JSON.stringify(this.state.todoList))
+        
     }
     renameItemHandler = (id) => {
         let t = prompt("Napisz nową zawartość i kliknij OK", this.state.todoList[id].text)
@@ -54,7 +57,7 @@ class ToDoList extends Component {
                     <ToDoItem 
                         key={item.id}
                         content={item.text}
-                        delete={() => this.deleteItemHandler(id)}
+                        remove={() => this.deleteItemHandler(id)}
                         rename={() => this.renameItemHandler(id)}/>);
                 })}
             </div>
