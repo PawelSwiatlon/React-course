@@ -3,9 +3,10 @@
   padding: 0;
   box-sizing: border-box;
 }
+/*#363637,#212121*/
 .App {
-  background-color: #1A1A1D;
-  height: 100vh;
+  background:linear-gradient(120deg, #363637,#212121);
+  min-height: 100vh;
 }
 
 

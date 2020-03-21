@@ -1,0 +1,46 @@
+.todoItem_box {
+    display: grid;
+    grid-template-areas: 
+    ". date"
+    "done content"
+    ". edit";
+    background-color: rgba(0,0,0,0.3);
+    margin-bottom: 10px;
+    grid-template-columns: 50px 1fr;
+    padding: 2px;
+    box-shadow: 0 0 5px 1px black;
+}
+.todoItem_data{
+    grid-area: date;
+    text-align: right;
+    color:gray;
+    text-decoration: underline;
+}
+.todoItem_doneButton{
+    grid-area: done;
+    align-self: center;
+    justify-self: center;
+}
+.todoItem_content{
+    grid-area: content;
+    word-break: break-all;
+    color: whitesmoke;
+    font-size: 20px;
+    padding: 10px 3px;
+}
+.todoItem_boxButton{
+    grid-area: edit;
+    text-align: right;
+}
+.todoItem_boxButton button{
+    border: none;
+    background-color: transparent;
+    margin: 0 3px;
+    padding: 2px;
+}
+.todoItem_boxButton button:nth-child(1) {
+    color: #24cb8b;
+}
+.todoItem_boxButton button:nth-child(2) {
+    color: red;
+}

@@ -58,22 +58,25 @@ class ToDoList extends Component {
     render(){
         return(
             <div className={classes.todoList_box}>
+                <section>
                 <h1 className={classes.todoList_title}>ToDoList</h1>
                 <ToDoForm 
                     onChange={this.updateDraftHandler} 
                     value={this.state.draft} 
                     onClick={this.addNewItemHandler} />
-                {this.state.todoList.map((item, id) => {return (
-                    <ToDoItem 
-                        key={item.id}
-                        content={item.text}
-                        remove={() => this.deleteItemHandler(id)}
-                        rename={() => this.renameItemHandler(id)}
-                        doneChange={() => this.doneHandler(id)}
-                        done={item.done}
-                        data={item.data}/>
-                    );
-                })}
+                </section>
+                <div className={classes.todoItems_box}>
+                    {this.state.todoList.map((item, id) => {return (
+                        <ToDoItem 
+                            key={item.id}
+                            content={item.text}
+                            remove={() => this.deleteItemHandler(id)}
+                            rename={() => this.renameItemHandler(id)}                                doneChange={() => this.doneHandler(id)}
+                            done={item.done}
+                            data={item.data}/>
+                        );
+                    })}
+                </div>
             </div>
         );
     }

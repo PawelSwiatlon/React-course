@@ -1,14 +1,14 @@
 import React from 'react';
-import classes from '../ToDoList/ToDoList.module.css'
+import classes from './ToDoItem.module.css'
 
 const ToDoItem = ({content,remove,rename,doneChange,done,data}) => (
     <div className={classes.todoItem_box}>
-        <p>{data}</p>
+        <p className={classes.todoItem_data}>{data}</p>
+        <input className={classes.todoItem_doneButton} onClick={doneChange} type="checkbox" checked={done ? 'checked':''}/>
         <p className={classes.todoItem_content} style={done ? {textDecoration: 'line-through', color: 'lime'} : {}}>{content}</p>
         <div className={classes.todoItem_boxButton}>
-            <button className={classes.todoItem_deleteButton} onClick={remove}>Delete</button>
-            <button onClick={doneChange}>Done</button>
-            <button className={classes.todoItem_renameButton} onClick={rename}>Edit</button>
+            <button onClick={rename}>Edit</button>
+            <button onClick={remove}>Delete</button>
         </div>
     </div>
 )

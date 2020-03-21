@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from '../ToDoList/ToDoList.module.css'
+import classes from './ToDoForm.module.css'
 
 const ToDoForm = ({onChange,onClick,value}) => (
     <div className={classes.todoList_addbox}>
