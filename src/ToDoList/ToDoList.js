@@ -28,10 +28,12 @@ class ToDoList extends Component {
     addNewItemHandler = () => {
         if(this.state.draft.length > 1){
             const todoList = [...this.state.todoList];
+            const d = new Date()
             todoList.push({ 
                 id: Math.floor(Math.random() * 100),
                 done: false,
-                text: this.state.draft
+                text: this.state.draft,
+                data: d.getFullYear()+"/"+(d.getMonth()+1)+"/"+d.getDate()+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds()
             })
             this.setState({todoList: todoList, draft: " "})
         }else {
@@ -68,7 +70,8 @@ class ToDoList extends Component {
                         remove={() => this.deleteItemHandler(id)}
                         rename={() => this.renameItemHandler(id)}
                         doneChange={() => this.doneHandler(id)}
-                        done={item.done}/>
+                        done={item.done}
+                        data={item.data}/>
                     );
                 })}
             </div>
